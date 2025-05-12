@@ -1,0 +1,45 @@
+ Big Data Notes Week 1 - Day 1 [05/07/2025 - Wednesday]
+---------------------------------------------------------
+
+What is Data Engineering?
+
+Whit the growth of data it was impossible to handle large scale and unstructured data using legacy systems. 
+People needed a framework which had the ability to integrate data storage and analysis. This is when Hadoop came into picture in 2006.
+Later came spark and other stuff.
+Hadoop is horizontally scaled and distributed system.
+
+Data engineer will be involved in transforming the data.
+
+Local Setup:
+
+Linux setup.
+- Using CentOS
+Link: https://ftp.iij.ad.jp/pub/linux/centos-vault/centos/8.0.1905/isos/x86_64/CentOS-8-x86_64-1905-boot.iso
+
+- Install VS Code
+- Install MySQL and Workbench
+
+https://dev.mysql.com/downloads/installer/
+https://dev.mysql.com/downloads/workbench/
+https://code.visualstudio.com/download
+
+In VM add the iso.
+Use this link in the Installation_Source
+
+https://vault.centos.org/8.5.2111/BaseOS/x86_64/os/
+
+Setup password for root.
+
+For using PowerShell to SSH to Linux Sub system, do the following:
+- Enable  CentOS settings > Network > Attached To: Bridged Adapter and Promiscuous 
+--- Mode: Allow All > Then click OK
+
+- Get the IP address from the Linux machine VirtualBox with > ip a 
+--- Note the IP address from #2 inet
+
+- Now do the following
+
+--- Start the PowerShell
+--- Ensure the ping works for the server (ipconfig from the VirtualBox)
+--- Run SSH root@<ip_address>
+--- Enter password for VirtualBox if prompted

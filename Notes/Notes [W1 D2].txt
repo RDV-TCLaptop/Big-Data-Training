@@ -1,0 +1,21 @@
+ Big Data Notes Week 1 - Day 2 [05/08/2025 - Wednesday]
+---------------------------------------------------------
+
+Linux commands:
+
+ls
+touch 
+vi
+    :q - quit
+    :w - save
+
+cat
+grep
+mkdir
+cd
+
+Learn more about databricks.
+also, Spark, Kafka.
+Presto, Arflow data processing, CI/CD.
+yarn, kubernetes, docker.
+Snoflake, cassandra

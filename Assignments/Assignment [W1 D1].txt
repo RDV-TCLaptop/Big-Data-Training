@@ -1,0 +1,12 @@
+ Big Data Notes Week 1 - Day 1 [05/07/2025 - Wednesday]
+---------------------------------------------------------
+
+----------								
+  To Do									
+----------								
+What is Linux, Evaluation History, Architecture, Applications, Pros and Cons?
+Why Linux with big data?
+What is Big Data?			
+What makes you interested in big data?
+See the market trend in Big Data. Data Engineering etc...
+Where do you see yourself in 2, 3 and 5 years. With respe`ct to big data.

@@ -1,0 +1,57 @@
+ Big Data Notes Week 1 - Day 2 [05/09/2025 - Wednesday]
+---------------------------------------------------------
+
+Differnt Linux Distro:
+
+Red hat - Most stable rarely gets updates
+
+Fidora - Constant updates
+
+CentOS - Bit stable version of Fidora
+
+
+Monday:
+
+Cross check:
+
+Linux
+Python 
+
+Start with:
+
+Scala
+
+
+Tuesday
+---------
+
+give topic for presentation to be held on Friday
+
+NEXT Week
+------------
+
+Parallel
+Python - Started
+Linux - Started
+Scala 
+SQL 
+
+Version control
+
+Each Friday a presentation
+
+--------
+
+Hadoop
+Hdfs
+Yarn
+
+3rd week 
+
+projects.
+
+1 on Premises / device
+1 on cloud
+
+CLP session
+Continuios learining program

@@ -1,0 +1,30 @@
+ Big Data Notes Week 1 - Day 2 [05/08/2025 - Thursday]
+---------------------------------------------------------
+
+Install:
+
+Java
+Python
+Scala
+Eclipse
+Maven
+Gradle
+
+Learn more about:
+
+OOPS concept, and functional programming
+databricks 
+Spark 
+Kafka 
+scala 
+Presto 
+Arflow data processing 
+AWS Lambda 
+CI/CD 
+yarn  
+kubernetes 
+docker 
+Snoflake 
+cassandra 
+difference btween Python programming and java programming
+ETL

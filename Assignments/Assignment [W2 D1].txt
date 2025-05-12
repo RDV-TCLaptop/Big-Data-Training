@@ -1,0 +1,10 @@
+Task for Tuesday
+
+Files on discord.
+
+Exercises with Joins:
+ - Inner Join: Join employees.csv with salaries.csv on EmployeeID to get the salary details for each employee.
+ - Left Join: Join employees.csv with departments.csv on Department to get the department manager for each employee.
+ - Right Join: Join employees.csv with projects.csv on EmployeeID to get the projects assigned to employees, including those with no project.
+ - Full Outer Join: Join salaries.csv with locations.csv on EmployeeID to get salary and location for all employees, even if some information is missing in one of the tables.
+ - Self Join: Join employees.csv with itself based on Department to get the list of employees in the same department as a specific employee.

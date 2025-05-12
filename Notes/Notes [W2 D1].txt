@@ -1,0 +1,19 @@
+ Big Data Notes Week 2 - Day 1 [05/12/2025 - Monday]
+---------------------------------------------------------
+
+My topic for Friday:
+
+Presentation:
+- 20 min
+- Interactive
+- Make usable scripts for everyone
+
+Person 5:
+- Sets
+- Dictionaries
+- Looping Techniques
+- More on Conditions
+- Comparing Sequences and Other Types
+- Modules
+- More on Modules
+- Executing Modules as Scripts
