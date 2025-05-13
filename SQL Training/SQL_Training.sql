@@ -17,18 +17,18 @@ INSERT INTO Sales (sale_id, product_id, quantity_sold, sale_date, total_price) V
 
 SELECT * FROM Sales;
 
-id, name cata, utit_price
+-- id, name cata, utit_price
 
 CREATE TABLE Product (
 	product_id INT PRIMARY KEY,
     product_name VARCHAR(100),
-    catagory VARCHAR(50),
+    category VARCHAR(50),
     unit_price DECIMAL(10, 2)
 ); 
 
 ALTER TABLE Product RENAME TO Products;
 
-INSERT INTO Products (product_id, product_name, catagory, unit_price) VALUES
+INSERT INTO Products (product_id, product_name, category, unit_price) VALUES
 (101, 'Laptop', 'Electronics', 500.00),
 (102, 'Smartphone', 'Electronics', 300.00),
 (103, 'Headphones', 'Electronics', 30.00),
@@ -43,7 +43,7 @@ SELECT product_name, unit_price FROM Products;
 
 SELECT * FROM Sales WHERE total_price > 100;
 
-SELECT * FROM Products WHERE catagory = "Electronics";
+SELECT * FROM Products WHERE category = "Electronics";
 
 -- Retrieve the sale_id and total_price from the Sales table for sales made on January 3, 2024.
 SELECT sale_id, total_price FROM Sales WHERE sale_date = '2024-01-03';
@@ -93,15 +93,15 @@ select sale_id, date_format(sale_date, '%Y-%m-%d') as Date_ from Sales;
 Select SUM(total_price) as total 
 from Sales 
 join Products on Sales.product_id = Products.product_id
-WHERE Products.catagory="Electronics";
+WHERE Products.category="Electronics";
 
 -- Retrieve the product_name and unit_price from the Products table, filtering the unit_price to show only values between $20 and $600.
 SELECT product_name, unit_price from Products
 where unit_price BETWEEN 20 AND 600;
 
 -- Retrieve the product_name and category from the Products table, ordering the results by category in ascending order.
-SELECT product_name, catagory from Products
-Order by catagory ASC;
+SELECT product_name, category from Products
+Order by category ASC;
 
 
 -------------------- --
@@ -112,7 +112,7 @@ Order by catagory ASC;
 SELECT SUM(quantity_sold) as tot_
 from Sales
 join Products on Sales.product_id = Products.product_id
-where catagory = "Electronics";
+where category = "Electronics";
 
 -- Retrieve the product_name and total_price from the Sales table, calculating the total_price as quantity_sold multiplied by unit_price.
 select product_name, quantity_sold * unit_price as total_price 
@@ -134,16 +134,16 @@ WHERE product_id not in (
 );
 
 -- Calculate the total revenue generated from sales for each product category.
-select p.catagory, SUM(s.total_price) total_rev
+select p.category, SUM(s.total_price) total_rev
 from Products p
 join Sales s on p.product_id = s.product_id
-group by catagory;
+group by category;
 
 -- Find the product category with the highest average unit price.
-select catagory, AVG(unit_price) as avg_unit
+select category, AVG(unit_price) as avg_unit
 from Products
 -- join Sales s where s.product_id = p.product_id
-group by catagory
+group by category
 order by avg_unit desc
 limit 1;
 
@@ -156,23 +156,54 @@ having SUM(s.total_price) > 30;
 
 
 -- Count the number of sales made in each month.
-select DATE_FORMAT(sale_date, '%Y-%m') as month_of, COUNT(*) as sales_count
+select DATE_FORMAT(sale_date, '%Y-%m') as month_, COUNT(*) as sales_
 from Sales
+group by month_ ;
 
 
 -- Retrieve Sales Details for Products with 'Smart' in Their Name
-
+select * 
+from Sales s
+join Products p on s.product_id = p.product_id
+where p.product_name like '%Smart%';
+ 
 -- Determine the average quantity sold for products with a unit price greater than $100.
+select AVG(quantity_sold) as avg_sale
+from Products p
+join Sales s on s.product_id = p.product_id
+where p.unit_price > 100;
 
 -- Retrieve the product name and total sales revenue for each product.
+select p.product_name, SUM(s.total_price) as total_rev
+from Sales s
+join Products p on s.product_id = p.product_id
+group by p.product_name;
 
 -- List all sales along with the corresponding product names.
+select s.sale_id, p.product_name  
+from Sales s
+join products p on s.product_id = p.product_id;
 
--- Retrieve the product name and total sales revenue for each product.
-
+-- Incorrect question in GFG
+select p.category, 
+	SUM(s.total_price) as category_total,
+    (SUM(s.total_price) / (select sum(total_price) from Sales)) * 100 as Percentage_rev
+from Sales s
+join products p on s.product_id = p.product_id
+group by p.category
+order by Percentage_rev DESC
+limit 1;
+    
 -- Rank products based on total sales revenue.
+select p.product_name, SUM(s.total_price) as total_reve,
+	RANK() OVER (ORDER BY SUM(s.total_price) DESC) AS revenue_rank
+from Sales s
+join products p on s.product_id = p.product_id
+group by p.product_name;
 
 -- Calculate the running total revenue for each product category.
+select * from Sales
+
 
 -- Categorize sales as "High", "Medium", or "Low" based on total price (e.g., > $200 is High, $100-$200 is Medium, < $100 is Low).
 
