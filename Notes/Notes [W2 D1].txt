@@ -8,7 +8,7 @@ Presentation:
 - Interactive
 - Make usable scripts for everyone
 
-Person 5:
+Person 5: (Rudram)
 - Sets
 - Dictionaries
 - Looping Techniques
