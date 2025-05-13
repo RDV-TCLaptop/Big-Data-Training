@@ -158,7 +158,7 @@ having SUM(s.total_price) > 30;
 -- Count the number of sales made in each month.
 select DATE_FORMAT(sale_date, '%Y-%m') as month_of, COUNT(*) as sales_count
 from Sales
-join 
+
 
 -- Retrieve Sales Details for Products with 'Smart' in Their Name
 
