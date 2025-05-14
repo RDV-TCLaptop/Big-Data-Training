@@ -108,9 +108,9 @@ SELECT product_name, category from Products
 Order by category ASC;
 
 
--------------------- --
---- INTERMEDIATE --- --
--------------------- --
+-- -------------------- --
+-- --- INTERMEDIATE --- --
+-- -------------------- --
 
 -- 1. Calculate the total quantity_sold of products in the 'Electronics' category.
 SELECT SUM(quantity_sold) as tot_
@@ -252,8 +252,8 @@ from Sales;
 -- 20. Identify sales made during weekdays versus weekends.
 select sale_id,dayofweek(sale_date),
 	CASE
-		WHEN dayofweek(sale_date) != 1 -- Sunday 
-			 or dayofweek(sale_date) != 7 -- Saturday
+		WHEN dayofweek(sale_date) != 1 or -- Sunday  
+             dayofweek(sale_date) != 7 -- Saturday
 				THEN "Weekday"
         ELSE "Weekend"
     END as dat_type
