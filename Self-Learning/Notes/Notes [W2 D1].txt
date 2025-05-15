@@ -17,3 +17,16 @@ Person 5: (Rudram)
 - Modules
 - More on Modules
 - Executing Modules as Scripts
+
+
+Eplain Project [20 min]
+
+- Intro [2 min]                                 rt: 2
+- Sets [2 min]                                  rt: 4
+- Dictionaries [2 min]                          rt: 6
+- Looping Techniques [3 min]                    rt: 9
+- More on Conditions [3 min]                    rt: 12
+- Comparing Sequences and Other Types [2 min]   rt: 15
+- Modules [2 min]                               rt: 17
+- More on Modules [2 min]                       rt: 19
+- Executing Modules as Scripts [1 min]          rt: 20

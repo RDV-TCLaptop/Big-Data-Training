@@ -17,8 +17,6 @@ INSERT INTO Sales (sale_id, product_id, quantity_sold, sale_date, total_price) V
 
 SELECT * FROM Sales;
 
--- id, name cata, utit_price
-
 CREATE TABLE Product (
 	product_id INT PRIMARY KEY,
     product_name VARCHAR(100),
