@@ -1,0 +1,52 @@
+Id,Name,Dept,Yoj,Salary
+1,Rose,IT,2012,26000
+2,Sam,Sales,2012,22000
+3,Mike,HR,2013,30000
+4,Nick,SC,2013,20000
+
+
+Create external table data
+(id Int, name String, age Int, city String)
+Row format delimited 
+fields terminated by ','
+stored as TEXTFILE
+location "/tmp/US_UK_05052025/rudram/hiveinput"
+Tblproperties ("skip.header.line.count"="1");
+
+
+# Internal table
+# Managed by Hive itself.
+
+Create table data_i
+(id Int, name String, age Int, city String)
+
+insert into data_i Values (1,'Rudram',25,'Atlanta');
+
+# With file
+
+------------------ This will not work! ------------------
+
+Create table data_i2
+(id Int, name String, age Int, city String)
+Row format delimited 
+fields terminated by ','
+stored as TEXTFILE
+location "/tmp/US_UK_05052025/rudram/hiveinput"
+Tblproperties ("skip.header.line.count"="1");
+
+---------------------------------------------------------
+
+NEXT TOIC
+
+Scoop Commands - To bring data to ES2
+-- We make data in Hive using the pulled data
+----- Create external tables to practice
+-- Use hive stuff on the table created.
+
+Run this in EC2-machine
+
+sqoop list-databases --connect jdbc:postgresql://18.170.23.150:5432/testdb --username consultants -P
+
+sqoop list-tables --connect jdbc:postgresql://18.170.23.150:5432/testdb --username consultants -P
+
+sqoop import --connect jdbc:postgresql://ip:5432/testdb --username consultants --password WelcomeItc@2022 --table car-insurance-claims --m 1 --target-dir /tmp/US_UK_05052025/rudram/sqoopdata
