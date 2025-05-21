@@ -1,4 +1,5 @@
 # Example for module
+print("Imported!")
 def fibonacci_write(n):
     a, b = 0, 1
     while b < n:
@@ -14,4 +15,5 @@ def fibonacci_return(n):
     return result
 
 if __name__ == "__main__":
+    
     fibonacci_write(1000)

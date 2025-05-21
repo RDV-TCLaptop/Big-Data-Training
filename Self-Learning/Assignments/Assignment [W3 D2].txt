@@ -1,0 +1,54 @@
+
+Presentation Topic 3: RUDRAM
+Object-Oriented Programming in Scala – Singletons and Companion Objects
+Explain singleton objects in Scala
+Discuss companion objects and their use in Scala classes
+
+-------------------------------------------------------------------
+
+Presentation Topic 1: 
+Functional Programming Fundamentals
+Functional programming basics in Scala: immutability, higher-order functions, first-class functions
+Examples of functional transformations on collections
+
+Presentation Topic 2: Object-Oriented Programming in Scala – Traits and Abstract Classes
+Define traits and abstract classes in Scala
+Highlight differences between traits and abstract classes
+
+Presentation Topic 3: 
+Object-Oriented Programming in Scala – Singletons and Companion Objects
+Explain singleton objects in Scala
+Discuss companion objects and their use in Scala classes
+
+Presentation Topic 4: 
+Scala Classes, Multiple Inheritance, and Case Classes
+Discuss multiple inheritance in Scala through traits
+Explain mixin composition with traits
+Introduce case classes and their significance
+Explain how case classes simplify immutable data handling
+
+Presentation Topic 5: 
+Asynchronous Programming and Concurrency in Scala
+Describe Futures and their role in asynchronous programming
+Discuss Promises for managing concurrency
+Introduce sealed classes and their importance in pattern matching
+Overview of Scala testing frameworks (ScalaTest, Specs2)
+Discuss unit testing, integration testing, and BDD in Scala
+
+Presentation Topic 6: 
+Advanced Functional Programming Concepts and Error Handling
+Explain implicit functions and their role in type inference and extensions
+Define closures and their importance in functional programming
+Describe error handling techniques including exceptions
+Introduce Try and Either monads for better error management
+
+Presentation Topic 7: 
+Scala Type System and Special Types
+Explore Scala’s type system and type inference
+Clarify differences between Nil, Null, null, Nothing, None, and Unit
+
+Presentation Topic 8: 
+Tooling and Functional Programming Features
+Discuss Scala Build Tool (SBT) and its importance in Scala development
+Overview of managing Scala projects with SBT
+Explain currying and its usage in functional programming

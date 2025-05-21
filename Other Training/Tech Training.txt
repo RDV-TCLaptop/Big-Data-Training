@@ -1,0 +1,52 @@
+  Understanding the relation of TC with vendors
+-------------------------------------------------
+
+Candidate connects to manager of vendor.
+
+Maybe more than 1 lender involved.
+
+4/5 will have 1 layer maybe 1 will have more then 1 layer.
+
+Prime vendor is a vendor for a company say "Apple" from where they hire.
+1 layer can directly be the prime vendor.
+
+--
+
+Pre-Interview process
+
+Vendor screenings:
+
+- Generally technical mut not technological experts.
+
+-- be confidant and assert you know the technology.
+
+
+1. Resume Walk Through
+ ----- About yourself, bg etc.
+
+2. Basic Technical screening
+ --- You will have help BUT START ANSWERING.
+ 
+ --- Stall till answer is provided
+ ------ DONOT ASK TO REPEAT THE QUESTION or USE FILLER WORDS
+ 
+3. Explanation of Job opportunity
+ --- Review the JD and do your HW.
+ ------ Oh yes ofc, i saw you use XYZ... Add about your exp
+ ------ Give proactive answer
+
+4. Next Steps
+ --- How may Interview do we expect:
+ ----- Atleast 1 with vendor
+ ----- Atleast 1/2 further ahead in the cain
+ ----- Atleast 1 DEEP Tecnical interview.
+ -- Sometimes 1 and done! [very rare only if quick action needed]
+
+5. Contractual related questions.
+ ---- C2C vs FullTime/W2/1099
+ ---- Possible contract and hire conditions
+ ---- Visa Staus & Sponsorship
+ ---- Further rate negotiation
+ -- Use sample Answers as a guide.
+
+
