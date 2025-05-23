@@ -1,0 +1,205 @@
+
+
+
+
+ssh -i "test_key.pem" ec2-user@18.170.23.150 
+
+
+sqoop list-databases --connect jdbc:postgresql://18.170.23.150:5432/testdb --username consultants -P
+
+
+
+hdfs dfs -mkdir /tmp/US_UK_2025/jinu
+
+sudo -u hdfs hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar wordcount /tmp/US_UK_2025/jinu/input/iput.txt /tmp/US_UK_05052025/jinu/output/
+
+/tmp/US_UK_2025/jinu/input/iput.txt
+
+
+
+/ec2-user/US_UK_05052025/jinu
+
+
+
+hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-mapreduce/hadoop-streaming.jar -files mapper.py,reducer.py -mapper "/usr/bin/python mapper.py" -reducer "/usr/bin/python reducer.py" -input /tmp/US_UK_2025/jinu/input/iput.txt  -output /tmp/US_UK_05052025/jinu/outputPython
+ 
+cp -r source_folder output_folder
+
+==========
+
+
+
+create external table employee
+(id int, name String, age int, city String)
+Row format delimited 
+fields terminated by ','
+Tblproperties ("skip.header.line.count"="1") 
+stored as TEXTFILE 
+location "/tmp/US_UK_05052025/jinu/hiveinput";
+
+==
+
+
+CREATE EXTERNAL TABLE employee (
+  id INT,
+  name STRING,
+  age INT,
+  city STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/tmp/US_UK_05052025/jinu/hiveinput'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+=====
+
+CREATE EXTERNAL TABLE employee (
+  id INT,
+  name STRING,
+  age INT
+)
+PARTITION BY(city STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/tmp/US_UK_05052025/jinu/ext_employee'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+
+===
+
+
+CREATE EXTERNAL TABLE ext_employee (
+  id INT,
+  name STRING,
+  age INT
+)
+PARTITIONED BY (city STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/tmp/US_UK_05052025/jinu/ext_employee';
+
+
+====
+
+
+CREATE EXTERNAL TABLE ext_employee_age_city (
+  id INT,
+  name STRING  
+)
+PARTITIONED BY (age INT,city STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/tmp/US_UK_05052025/jinu/ext_employee_age_city';
+
+
+CREATE EXTERNAL TABLE ext_employee_city_age_1 (
+  id INT,
+  name STRING  
+)
+PARTITIONED BY (city STRING,age INT)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/tmp/US_UK_05052025/jinu/ext_employee_city_age_1';
+
+---
+
+CREATE EXTERNAL TABLE user_transactions (
+    transaction_id STRING,
+    user_id STRING,
+    amount DOUBLE
+)
+PARTITIONED BY (
+    year INT,
+    month INT
+)
+CLUSTERED BY (user_id) INTO 4 BUCKETS
+STORED AS ORC
+LOCATION '/user/hive/warehouse/user_transactions_ext/';
+
+----
+
+CREATE EXTERNAL TABLE ext_employee_age_city (
+  id INT,
+  name STRING  
+)
+PARTITIONED BY (age INT,city STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/tmp/US_UK_05052025/jinu/ext_employee_age_city';
+
+
+
+-----
+
+
+
+
+
+
+====
+
+
+INSERT INTO ext_employee_city_age SELECT * FROM employee;
+
+
+INSERT INTO ext_employee_city_age_1 SELECT id,name,city,age FROM employee;
+
+
+==
+
+MSCK REPAIR TABLE ext_employee;
+
+
+
+==
+
+CREATE TABLE employeeM (
+  id INT,
+  name STRING,
+  age INT,
+  city STRING
+);
+
+
+INSERT INTO employeem VALUES(1,"")
+
+show create table employeem;
+
+===
+SQOOP commands
+
+consultants
+WelcomeItc@2022
+
+=========================
+sqoop list-databases --connect jdbc:postgresql://18.170.23.150:5432/testdb --username consultants -P
+sqoop list-tables --connect jdbc:postgresql://18.170.23.150:5432/testdb --username consultants -P
+====
+
+sqoop import --connect jdbc:postgresql://18.170.23.150:5432/testdb --username consultants --password WelcomeItc@2022 --table location --m 1 --target-dir /tmp/US_UK_05052025/jinu/sqoopdata
+
+hdfs dfs -cat /tmp/US_UK_05052025/jinu/sqoopdata/part-m-00000
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+

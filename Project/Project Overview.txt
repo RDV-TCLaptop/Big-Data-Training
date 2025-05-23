@@ -1,0 +1,19 @@
+Project:
+
+1. Topic Name: What you want to do.
+ --- Think like you worked on a company. (eg, bank, airline etc)
+
+2. Where was data from. {Source}
+
+3. Create ETL
+ -- Put the data in PostgreSQL [ Find data from kegal etc. (upto 20,000) pyhon prefered for loading] 
+ ----Prefer API Data
+
+ -- Bring it to HDFS using scoop and use hive to create table
+ -- implement Full load AND incremental load
+ ----- That will be RAW DATA
+
+ -- Do the transformation [will be covered on Tuesday] [ Spark ]
+
+ -- Do analytics
+ -- Create Dashboards

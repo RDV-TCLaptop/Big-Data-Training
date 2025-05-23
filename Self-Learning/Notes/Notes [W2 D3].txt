@@ -22,6 +22,7 @@ Create table data_i
 
 insert into data_i Values (1,'Rudram',25,'Atlanta');
 
+
 # With file
 
 ------------------ This will not work! ------------------
@@ -36,7 +37,10 @@ Tblproperties ("skip.header.line.count"="1");
 
 ---------------------------------------------------------
 
-NEXT TOIC
+This will show you where the table lives: show create table data_i
+show create table [table_name]
+
+NEXT TOPIC
 
 Scoop Commands - To bring data to ES2
 -- We make data in Hive using the pulled data
@@ -49,4 +53,89 @@ sqoop list-databases --connect jdbc:postgresql://18.170.23.150:5432/testdb --use
 
 sqoop list-tables --connect jdbc:postgresql://18.170.23.150:5432/testdb --username consultants -P
 
-sqoop import --connect jdbc:postgresql://ip:5432/testdb --username consultants --password WelcomeItc@2022 --table car-insurance-claims --m 1 --target-dir /tmp/US_UK_05052025/rudram/sqoopdata
+sqoop import --connect jdbc:postgresql://18.170.23.150:5432/testdb --username consultants --password WelcomeItc@2022 --table car-insurance-claims --m 1 --target-dir /tmp/US_UK_05052025/rudram/sqoopdata
+
+
+
+
+External Table with partition
+
+Create external table data_part(
+    id Int, 
+    name String, 
+    age Int 
+)
+partitioned by (city String)
+Row format delimited 
+fields terminated by ','
+stored as TEXTFILE
+location "/tmp/US_UK_05052025/rudram/ext_data"
+Tblproperties ("skip.header.line.count"="1") --- keeping this line will not give the data because the tabel will not get any headers.
+
+
+CREATE EXTERNAL TABLE ext_data (
+    id INT,
+    name STRING,
+    age INT
+)
+PARTITIONED BY (city STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/tmp/US_UK_05052025/rudram/ext_data';
+
+# Multi Partition
+
+--> city before age
+
+CREATE EXTERNAL TABLE ext_data_c_a_2 (
+    id INT,
+    name STRING
+)
+PARTITIONED BY (city STRING, age INT)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/tmp/US_UK_05052025/rudram/ext_data_c_a_2';
+
+--> age before city
+
+CREATE EXTERNAL TABLE ext_data_a_c (
+    id INT,
+    name STRING
+)
+PARTITIONED BY (age INT, city STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/tmp/US_UK_05052025/rudram/ext_data_a_c';
+
+---------------
+
+INSER INTO ext_data_c_a_1 SELECT id,name,age,city FROM data;
+
+----------- PARTITION BY will be asked in Tech Evaluation -----------
+
+CREATE EXTERNAL TABLE employee_bucket (
+    Id INT,
+    Name STRING,
+    Age INT,
+    City STRING
+)
+CLUSTERED BY (Id) INTO 4 BUCKETS
+Row format delimited 
+fields terminated by ','
+stored as TEXTFILE
+LOCATION '/tmp/US_UK_05052025/rudram/employee_bucket';
+
+CREATE EXTERNAL TABLE employee_bucket_city (
+    Id INT,
+    Name STRING,
+    Age INT,
+    City STRING
+)
+CLUSTERED BY (city) INTO 4 BUCKETS
+Row format delimited 
+fields terminated by ','
+stored as TEXTFILE
+LOCATION '/tmp/US_UK_05052025/rudram/employee_bucket_city';
