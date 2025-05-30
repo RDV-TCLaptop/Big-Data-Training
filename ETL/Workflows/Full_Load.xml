@@ -1,0 +1,26 @@
+<workflow-app name="Rudram_Full_Load" xmlns="uri:oozie:workflow:0.5">
+    <start to="sqoop-1e80"/>
+    <kill name="Kill">
+        <message>Action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <action name="sqoop-1e80">
+        <sqoop xmlns="uri:oozie:sqoop-action:0.2">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <command>sqoop import --connect jdbc:postgresql://18.170.23.150:5432/testdb --username consultants --password WelcomeItc@2022 --table rdv_employee --m 1 --target-dir /tmp/US_UK_05052025/rudram/etl/data</command>
+        </sqoop>
+        <ok to="hive2-bd7d"/>
+        <error to="Kill"/>
+    </action>
+    <action name="hive2-bd7d" cred="hive2">
+        <hive2 xmlns="uri:oozie:hive2-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <jdbc-url>jdbc:hive2://ip-172-31-8-235.eu-west-2.compute.internal:10000/default</jdbc-url>
+            <script>/tmp/US_UK_05052025/rudram/etl/full_load.hql</script>
+        </hive2>
+        <ok to="End"/>
+        <error to="Kill"/>
+    </action>
+    <end name="End"/>
+</workflow-app>

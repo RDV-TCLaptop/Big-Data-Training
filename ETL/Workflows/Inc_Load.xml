@@ -1,0 +1,18 @@
+<workflow-app name="Rudram_Inc_Load" xmlns="uri:oozie:workflow:0.5">
+    <start to="shell-d963"/>
+    <kill name="Kill">
+        <message>Action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <action name="shell-d963">
+        <shell xmlns="uri:oozie:shell-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <exec>inc_load.sh</exec>
+            <file>/tmp/US_UK_05052025/rudram/etl/inc_load.sh#inc_load.sh</file>
+              <capture-output/>
+        </shell>
+        <ok to="End"/>
+        <error to="Kill"/>
+    </action>
+    <end name="End"/>
+</workflow-app>

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Assign arguments to variables for clearer reference
+TABLE="rdv_employee"
+HIVE_DATABASE="us_rudram" # Use the 3rd argument if provided, otherwise default to 'default'
+
+# Variables
+HOSTNAME='18.170.23.150'
+DBNAME='testdb'
+USERNAME='consultants'
+PASSWORD='WelcomeItc@2022'
+TARGET_DIR="/tmp/US_UK_05052025/rudram/etl/data" # Modified to include user in the path
+
+sudo -u hdfs hdfs dfs -chmod -R 777 /tmp/US_UK_05052025/rudram/etl
+sudo -u hdfs hdfs dfs -chmod -R 777 /tmp/US_UK_05052025/rudram/etl/* 
+
+# Fetch the maximum id value from Hive
+LAST_VALUE=$(beeline -u "jdbc:hive2://ip-172-31-14-3.eu-west-2.compute.internal:10000/${HIVE_DATABASE};" --silent=true -e "SELECT MAX(employee_id) FROM ${TABLE};" | grep -o '[0-9]*' | tail -n 1)
+
+echo "Last recorded ID: $LAST_VALUE"
+echo "Starting new import from ID greater than $LAST_VALUE"
+
+# Perform the incremental Sqoop import
+sqoop import \
+    --connect jdbc:postgresql://${HOSTNAME}:5432/${DBNAME} \
+    --username ${USERNAME} \
+    --password ${PASSWORD} \
+    --table ${TABLE} \
+    --incremental append \
+    --check-column employee_id \
+    --last-value ${LAST_VALUE} \
+    --target-dir ${TARGET_DIR} \
+    --m 1 \
+    --as-textfile
